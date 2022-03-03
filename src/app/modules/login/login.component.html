@@ -1,0 +1,29 @@
+<div class="container">
+    <form class="mt-5" [formGroup]="loginForm" (ngSubmit)="submit()" autocomplete="off">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="username">Email address</label>
+            <input type="text" placeholder="Email address" id="username" class="form-control"
+                formControlName="username" />
+            <span
+                *ngIf="loginForm.controls['username'].errors && loginForm.controls['username'].errors['required'] && (loginForm.controls['username'].touched || loginForm.controls['username'].dirty)"
+                class="text-danger">Email address is required.</span>
+            <span
+                *ngIf="loginForm.controls['username'].errors && loginForm.controls['username'].errors['email'] && (loginForm.controls['username'].touched || loginForm.controls['username'].dirty)"
+                class="text-danger">Email address is not valid.</span>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" placeholder="Password" id="password" class="form-control"
+                formControlName="password" />
+            <span
+                *ngIf="loginForm.controls['password'].errors && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)"
+                class="text-danger">Password is required.</span>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+    </form>
+</div>
